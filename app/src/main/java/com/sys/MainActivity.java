@@ -9,6 +9,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import java.util.ArrayList;
+
 public class MainActivity extends FragmentActivity {
     private ViewPager viewPager;
     private MenuItem menuItem;
@@ -58,8 +60,13 @@ public class MainActivity extends FragmentActivity {
     }
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        ArrayList<Integer> images = new ArrayList<Integer>();
+        images.add(R.mipmap.banner_one);
+        images.add(R.mipmap.banner_two);
+        images.add(R.mipmap.banner_three);
+        images.add(R.mipmap.banner_four);
 
-        adapter.addFragment(new FragmentOne());
+        adapter.addFragment(FragmentOne.newInstance(images));
         adapter.addFragment(new FragmentTwo());
         adapter.addFragment(new FragmentThree());
         adapter.addFragment(new FragmentFour());

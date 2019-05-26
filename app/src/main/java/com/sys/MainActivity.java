@@ -1,18 +1,25 @@
 package com.sys;
 
-import android.app.Activity;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+
+import com.sys.activitys.BaseActivity;
+import com.sys.activitys.BaseFragment;
+import com.sys.adapter.ViewPagerAdapter;
+import com.sys.fragments.FragmentFour;
+import com.sys.fragments.FragmentOne;
+import com.sys.fragments.FragmentThree;
+import com.sys.fragments.FragmentTwo;
 
 import java.util.ArrayList;
 
 public class MainActivity extends FragmentActivity {
     private ViewPager viewPager;
+
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
 
@@ -67,7 +74,7 @@ public class MainActivity extends FragmentActivity {
         images.add(R.mipmap.banner_four);
 
         adapter.addFragment(FragmentOne.newInstance(images));
-        adapter.addFragment(new FragmentTwo());
+        adapter.addFragment(FragmentTwo.newInstance("TWO ACTIVITY"));
         adapter.addFragment(new FragmentThree());
         adapter.addFragment(new FragmentFour());
         viewPager.setAdapter(adapter);

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingLeft="@dimen/marginSize"
+    android:paddingRight="@dimen/marginSize"
+    android:background="@color/colorMain"
+    android:layout_height="@dimen/navBarHeight">
+
+    <ImageView
+        android:id="@+id/nav_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/fanhui"
+        android:layout_gravity="center|left"
+        />
+
+    <TextView
+        android:id="@+id/nav_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="系统"
+        android:textSize="@dimen/navTextSize"
+        />
+    <ImageView
+        android:id="@+id/nav_user"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center|right"
+        android:src="@mipmap/user"
+        />
+</FrameLayout>

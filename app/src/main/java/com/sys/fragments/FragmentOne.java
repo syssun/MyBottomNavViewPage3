@@ -1,25 +1,31 @@
-package com.sys;
+package com.sys.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.text.style.ImageSpan;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.sys.R;
+import com.sys.activitys.BaseFragment;
+import com.sys.adapter.HomeGridAdapter;
+import com.sys.entitys.HomeGrid;
 import com.sys.loader.GlideImageLoader;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
-import java.util.List;
 
-public class FragmentOne extends Fragment {
-
+public class FragmentOne extends BaseFragment {
     ArrayList<Integer> images ;
     private static final String BUNKEY="images";
+    RecyclerView recyclerView;
     Banner banner;
+    HomeGridAdapter homeGridAdapter;
     public static  FragmentOne newInstance(ArrayList<Integer> images){
         Bundle bundle = new Bundle();
         bundle.putIntegerArrayList(BUNKEY,images);
@@ -39,17 +45,33 @@ public class FragmentOne extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_one, null);
+        initNavBar(view,false,"首页",false);
+        banner = view.findViewById(R.id.banner);
+        recyclerView = view.findViewById(R.id.rv_grid);
+        recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
+
+        ArrayList<HomeGrid> homeGrids = new ArrayList<>();
+        homeGrids.add(new HomeGrid(R.mipmap.qianshou,"订单签收"));
+        homeGrids.add(new HomeGrid(R.mipmap.yichang,"异常运单"));
+        homeGrids.add(new HomeGrid(R.mipmap.fache,"司机发车"));
+        homeGrids.add(new HomeGrid(R.mipmap.huicheng,"司机收车"));
+        homeGrids.add(new HomeGrid(R.mipmap.jiayou,"加油管理"));
+        homeGrids.add(new HomeGrid(R.mipmap.rolad,"路桥费用"));
+        homeGrids.add(new HomeGrid(R.mipmap.weixiu,"维修管理"));
+
+        homeGridAdapter = new HomeGridAdapter(getActivity(),homeGrids);
+        recyclerView.setAdapter(homeGridAdapter);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        banner = view.findViewById(R.id.banner);
         //设置图片加载器
         banner.setImageLoader(new GlideImageLoader());
         //设置图片集合
         banner.setImages(images);
+        banner.setDelayTime(4000);
         //banner设置方法全部调用完毕时最后调用
         banner.start();
 

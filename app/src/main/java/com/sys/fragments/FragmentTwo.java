@@ -10,9 +10,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.sys.R;
+import com.sys.views.LoadingFrame;
 
 public class FragmentTwo extends Fragment {
+    View mview;
     String title ;
+    TextView v ;
+    LoadingFrame frame;
     private static final String TEXTKEY="title";
     public static FragmentTwo newInstance(String title){
         Bundle bundle = new Bundle();
@@ -32,14 +36,27 @@ public class FragmentTwo extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_two, null);
-        return view;
+        mview = inflater.inflate(R.layout.fragment_two, null);
+        v = mview.findViewById(R.id.two_text);
+         frame = new LoadingFrame(getContext()) {
+            @Override
+            public View onSuccessView() {
+                return mview;
+            }
+
+            @Override
+            public int onLoad() {
+                return -1;
+            }
+        };
+
+        return frame;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        TextView v = view.findViewById(R.id.two_text);
+        frame.show();
         v.setText(title);
     }
 }

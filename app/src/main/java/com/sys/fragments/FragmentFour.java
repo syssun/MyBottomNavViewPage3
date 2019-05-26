@@ -9,12 +9,26 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sys.R;
+import com.sys.views.LoadingFrame;
 
 public class FragmentFour extends Fragment {
+     View view;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_four, null);
-        return view;
+          view = inflater.inflate(R.layout.fragment_four, null);
+        LoadingFrame frame = new LoadingFrame(getContext()) {
+            @Override
+            public View onSuccessView() {
+                return view;
+            }
+
+            @Override
+            public int onLoad() {
+                return 201;
+            }
+        };
+        frame.show();
+        return frame;
     }
 }

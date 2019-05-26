@@ -16,6 +16,7 @@ import com.sys.activitys.BaseFragment;
 import com.sys.adapter.HomeGridAdapter;
 import com.sys.entitys.HomeGrid;
 import com.sys.loader.GlideImageLoader;
+import com.sys.views.LoadingFrame;
 import com.youth.banner.Banner;
 
 import java.util.ArrayList;
@@ -24,6 +25,7 @@ public class FragmentOne extends BaseFragment {
     ArrayList<Integer> images ;
     private static final String BUNKEY="images";
     RecyclerView recyclerView;
+    View mview;
     Banner banner;
     HomeGridAdapter homeGridAdapter;
     public static  FragmentOne newInstance(ArrayList<Integer> images){
@@ -44,7 +46,7 @@ public class FragmentOne extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_one, null);
+        final View view = inflater.inflate(R.layout.fragment_one,null);
         initNavBar(view,false,"首页",false);
         banner = view.findViewById(R.id.banner);
         recyclerView = view.findViewById(R.id.rv_grid);
@@ -61,11 +63,25 @@ public class FragmentOne extends BaseFragment {
 
         homeGridAdapter = new HomeGridAdapter(getActivity(),homeGrids);
         recyclerView.setAdapter(homeGridAdapter);
-        return view;
+        mview = view;
+
+        LoadingFrame frame = new LoadingFrame(getContext()) {
+            @Override
+            public View onSuccessView() {
+                return view;
+            }
+
+            @Override
+            public int onLoad() {
+                return 200;
+            }
+        };
+        frame.show();
+        return frame;
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         //设置图片加载器
         banner.setImageLoader(new GlideImageLoader());
@@ -74,6 +90,9 @@ public class FragmentOne extends BaseFragment {
         banner.setDelayTime(4000);
         //banner设置方法全部调用完毕时最后调用
         banner.start();
+
+
+
 
     }
     //如果你需要考虑更好的体验，可以这么操作

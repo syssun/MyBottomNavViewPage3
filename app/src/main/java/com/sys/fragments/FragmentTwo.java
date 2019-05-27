@@ -43,20 +43,19 @@ public class FragmentTwo extends Fragment {
             public View onSuccessView() {
                 return mview;
             }
-
             @Override
             public int onLoad() {
                 return -1;
             }
         };
-
+        frame.show();
         return frame;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        frame.show();
+
         v.setText(title);
     }
 }

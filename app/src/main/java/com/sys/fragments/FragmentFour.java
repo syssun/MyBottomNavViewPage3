@@ -13,16 +13,16 @@ import com.sys.views.LoadingFrame;
 
 public class FragmentFour extends Fragment {
      View view;
+    LoadingFrame frame;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-          view = inflater.inflate(R.layout.fragment_four, null);
-        LoadingFrame frame = new LoadingFrame(getContext()) {
+        view = inflater.inflate(R.layout.fragment_four, null);
+        frame = new LoadingFrame(getContext()) {
             @Override
             public View onSuccessView() {
                 return view;
             }
-
             @Override
             public int onLoad() {
                 return 201;
@@ -30,5 +30,11 @@ public class FragmentFour extends Fragment {
         };
         frame.show();
         return frame;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
     }
 }

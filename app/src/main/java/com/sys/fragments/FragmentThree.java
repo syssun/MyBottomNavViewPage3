@@ -13,11 +13,12 @@ import com.sys.views.LoadingFrame;
 
 public class FragmentThree extends Fragment {
      View view;
+    LoadingFrame frame;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_three, null);
-        LoadingFrame frame = new LoadingFrame(getContext()) {
+        frame = new LoadingFrame(getContext()) {
             @Override
             public View onSuccessView() {
                 return view;
@@ -30,5 +31,11 @@ public class FragmentThree extends Fragment {
         };
         frame.show();
         return frame;
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
     }
 }

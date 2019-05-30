@@ -47,7 +47,7 @@ public class FragmentOne extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_one,null);
+        view = inflater.inflate(R.layout.fragment_one,container,false);
         initNavBar(view,false,"首页",false);
         banner = view.findViewById(R.id.banner);
         recyclerView = view.findViewById(R.id.rv_grid);
@@ -64,19 +64,8 @@ public class FragmentOne extends BaseFragment {
 
         homeGridAdapter = new HomeGridAdapter(getActivity(),homeGrids);
         recyclerView.setAdapter(homeGridAdapter);
-        frame = new LoadingFrame(getContext()) {
-            @Override
-            public View onSuccessView() {
-                return view;
-            }
 
-            @Override
-            public int onLoad() {
-                return 200;
-            }
-        };
-        frame.show();
-        return frame;
+        return view;
     }
 
     @Override

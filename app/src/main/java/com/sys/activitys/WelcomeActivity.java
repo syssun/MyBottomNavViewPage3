@@ -32,6 +32,7 @@ public class WelcomeActivity extends Activity {
     public void toMain(){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+        finish();
     }
     public void toLogin(){
         Intent intent = new Intent(this, LoginActivity.class);

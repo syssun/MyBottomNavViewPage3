@@ -17,19 +17,9 @@ public class FragmentFour extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_four, null);
-        frame = new LoadingFrame(getContext()) {
-            @Override
-            public View onSuccessView() {
-                return view;
-            }
-            @Override
-            public int onLoad() {
-                return 201;
-            }
-        };
-        frame.show();
-        return frame;
+        view = inflater.inflate(R.layout.fragment_four, container,false);
+
+        return view;
     }
 
     @Override

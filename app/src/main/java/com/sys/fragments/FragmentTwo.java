@@ -11,12 +11,14 @@ import android.widget.TextView;
 
 import com.sys.R;
 import com.sys.views.LoadingFrame;
+import com.wang.avi.AVLoadingIndicatorView;
 
 public class FragmentTwo extends Fragment {
     View mview;
     String title ;
     TextView v ;
     LoadingFrame frame;
+    AVLoadingIndicatorView indicatorView;
     private static final String TEXTKEY="title";
     public static FragmentTwo newInstance(String title){
         Bundle bundle = new Bundle();
@@ -36,20 +38,11 @@ public class FragmentTwo extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        mview = inflater.inflate(R.layout.fragment_two, null);
+        mview = inflater.inflate(R.layout.fragment_two, container,false);
         v = mview.findViewById(R.id.two_text);
-         frame = new LoadingFrame(getContext()) {
-            @Override
-            public View onSuccessView() {
-                return mview;
-            }
-            @Override
-            public int onLoad() {
-                return -1;
-            }
-        };
-        frame.show();
-        return frame;
+        indicatorView= (AVLoadingIndicatorView) mview.findViewById(R.id.avi);
+        indicatorView.show();
+        return mview;
     }
 
     @Override

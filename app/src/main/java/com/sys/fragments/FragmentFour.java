@@ -9,16 +9,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.sys.R;
+import com.sys.activitys.BaseFragment;
 import com.sys.views.LoadingFrame;
 
-public class FragmentFour extends Fragment {
+public class FragmentFour extends BaseFragment {
      View view;
     LoadingFrame frame;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_four, container,false);
-
+        initNavBar(view,false,"four",false);
         return view;
     }
 

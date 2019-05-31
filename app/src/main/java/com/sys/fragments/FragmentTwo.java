@@ -1,5 +1,6 @@
 package com.sys.fragments;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -10,16 +11,22 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.sys.R;
+import com.sys.activitys.BaseFragment;
 import com.sys.views.LoadingFrame;
 import com.wang.avi.AVLoadingIndicatorView;
 
-public class FragmentTwo extends Fragment {
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class FragmentTwo extends BaseFragment {
     View mview;
     String title ;
     TextView v ;
     LoadingFrame frame;
     AVLoadingIndicatorView indicatorView;
     private static final String TEXTKEY="title";
+
+
     public static FragmentTwo newInstance(String title){
         Bundle bundle = new Bundle();
         bundle.putString(TEXTKEY,title);
@@ -38,10 +45,12 @@ public class FragmentTwo extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
         mview = inflater.inflate(R.layout.fragment_two, container,false);
+        initNavBar(mview,false,"two",false);
         v = mview.findViewById(R.id.two_text);
-        indicatorView= (AVLoadingIndicatorView) mview.findViewById(R.id.avi);
-        indicatorView.show();
+        indicatorView= mview.findViewById(R.id.avi);
+        startAVLoading();
         return mview;
     }
 
@@ -50,5 +59,11 @@ public class FragmentTwo extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         v.setText(title);
+    }
+    public void startAVLoading(){
+        indicatorView.show();
+    }
+    public void stopAVLoading(){
+        indicatorView.hide();
     }
 }

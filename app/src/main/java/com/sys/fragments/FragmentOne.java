@@ -59,7 +59,7 @@ public class FragmentOne extends BaseFragment {
         homeGrids.add(new HomeGrid(R.mipmap.fache,"司机发车"));
         homeGrids.add(new HomeGrid(R.mipmap.huicheng,"司机收车"));
         homeGrids.add(new HomeGrid(R.mipmap.jiayou,"加油管理"));
-        homeGrids.add(new HomeGrid(R.mipmap.rolad,"路桥费用"));
+        homeGrids.add(new HomeGrid(R.mipmap.gonglu,"路桥费用"));
         homeGrids.add(new HomeGrid(R.mipmap.weixiu,"维修管理"));
 
         homeGridAdapter = new HomeGridAdapter(getActivity(),homeGrids);

@@ -18,6 +18,8 @@ import com.sys.fragments.FragmentThree;
 import com.sys.fragments.FragmentTwo;
 
 import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends FragmentActivity {
 
@@ -56,6 +58,17 @@ public class MainActivity extends FragmentActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.FramePage,fragmentOne).show(fragmentOne).commit();//初始页面显示
         bottomNavigationView.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        new Timer().schedule(new TimerTask() {
+           @Override
+           public void run() {
+               runOnUiThread(new Runnable() {
+                   @Override
+                   public void run() {
+                       fragmentTwo.stopAVLoading();
+                   }
+               });
+           }
+       },2000);
     }
 
     private BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener

@@ -25,7 +25,7 @@ public class FragmentTwo extends BaseFragment {
     LoadingFrame frame;
     AVLoadingIndicatorView indicatorView;
     private static final String TEXTKEY="title";
-
+    Timer timer;
 
     public static FragmentTwo newInstance(String title){
         Bundle bundle = new Bundle();
@@ -51,6 +51,18 @@ public class FragmentTwo extends BaseFragment {
         v = mview.findViewById(R.id.two_text);
         indicatorView= mview.findViewById(R.id.avi);
         startAVLoading();
+        timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        stopAVLoading();
+                    }
+                });
+            }
+        },3000);
         return mview;
     }
 
@@ -61,9 +73,11 @@ public class FragmentTwo extends BaseFragment {
         v.setText(title);
     }
     public void startAVLoading(){
-        indicatorView.show();
+        if(indicatorView !=null)
+          indicatorView.show();
     }
     public void stopAVLoading(){
-        indicatorView.hide();
+        if(indicatorView !=null)
+          indicatorView.hide();
     }
 }

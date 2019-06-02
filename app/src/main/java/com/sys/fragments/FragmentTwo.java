@@ -10,10 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.sys.R;
 import com.sys.activitys.BaseFragment;
 import com.sys.views.LoadingFrame;
-import com.wang.avi.AVLoadingIndicatorView;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -23,10 +23,9 @@ public class FragmentTwo extends BaseFragment {
     String title ;
     TextView v ;
     LoadingFrame frame;
-    AVLoadingIndicatorView indicatorView;
     private static final String TEXTKEY="title";
     Timer timer;
-
+    SmartRefreshLayout smartRefreshLayout;
     public static FragmentTwo newInstance(String title){
         Bundle bundle = new Bundle();
         bundle.putString(TEXTKEY,title);
@@ -49,20 +48,8 @@ public class FragmentTwo extends BaseFragment {
         mview = inflater.inflate(R.layout.fragment_two, container,false);
         initNavBar(mview,false,"two",false);
         v = mview.findViewById(R.id.two_text);
-        indicatorView= mview.findViewById(R.id.avi);
-        startAVLoading();
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        stopAVLoading();
-                    }
-                });
-            }
-        },3000);
+        smartRefreshLayout = mview.findViewById(R.id.refreshLayout);
+        smartRefreshLayout.autoRefresh();
         return mview;
     }
 
@@ -72,12 +59,5 @@ public class FragmentTwo extends BaseFragment {
 
         v.setText(title);
     }
-    public void startAVLoading(){
-        if(indicatorView !=null)
-          indicatorView.show();
-    }
-    public void stopAVLoading(){
-        if(indicatorView !=null)
-          indicatorView.hide();
-    }
+
 }

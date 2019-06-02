@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.sys.R;
 import com.sys.entitys.HomeGrid;
@@ -32,9 +33,15 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoler viewHoler, int i) {
-        HomeGrid  homeGrid= homeGrids.get(i);
+        final HomeGrid  homeGrid= homeGrids.get(i);
         imageView.setImageResource(homeGrid.getIamge());
         textView.setText(homeGrid.getTitle());
+        viewHoler.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(context,homeGrid.getTitle(),Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override

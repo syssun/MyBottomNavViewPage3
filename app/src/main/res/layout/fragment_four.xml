@@ -24,13 +24,8 @@
         app:srlTextFailed="刷新失败"
         app:srlTextUpdate="上次更新 MM-dd HH:mm"
         app:srlTextRefreshing="刷新中..." />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="个人中心"/>
+        <include layout="@layout/info_grid"/>
+
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:textColor="@android:color/black"

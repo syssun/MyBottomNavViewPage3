@@ -1,11 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
     <include layout="@layout/nav_bar"/>
-
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/refreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:srlPrimaryColor="@color/colorMain"
+        app:srlAccentColor="@android:color/black"
+        >
+        <!--app:srlAccentColor="@android:color/white"
+        app:srlEnablePreviewInEditMode="true"-->
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:srlTextPulling="下拉刷新"
+            app:srlTextLoading="等待底部加载完成…"
+            app:srlTextRelease="松开刷新"
+            app:srlTextFinish="刷新完成"
+            app:srlTextFailed="刷新失败"
+            app:srlTextUpdate="上次更新 MM-dd HH:mm"
+            app:srlTextRefreshing="刷新中..." />
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -13,5 +31,16 @@
         android:gravity="center"
         android:textSize="30sp"
         android:text="历史纪录"/>
-
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+            android:layout_width="match_parent"
+            android:textColor="@android:color/black"
+            android:layout_height="wrap_content"
+            app:srlTextPulling="上拉加载更多"
+            app:srlTextRelease="释放立即加载"
+            app:srlTextLoading="正在加载…"
+            app:srlTextRefreshing="等待头部刷新完成…"
+            app:srlTextFinish="加载完成"
+            app:srlTextFailed="加载失败"
+            app:srlTextNothing="没有更多数据了"/>
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

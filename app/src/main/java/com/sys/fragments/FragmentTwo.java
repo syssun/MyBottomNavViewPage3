@@ -49,7 +49,8 @@ public class FragmentTwo extends BaseFragment {
         initNavBar(mview,false,"two",false);
         v = mview.findViewById(R.id.two_text);
         smartRefreshLayout = mview.findViewById(R.id.refreshLayout);
-        smartRefreshLayout.autoRefresh();
+        //smartRefreshLayout.autoRefresh();
+       // smartRefreshLayout.seth
         return mview;
     }
 

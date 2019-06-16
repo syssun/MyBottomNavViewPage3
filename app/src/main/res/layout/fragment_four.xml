@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
     <include layout="@layout/nav_bar"/>
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
-        android:id="@+id/refreshLayout"
+        android:id="@+id/f_refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:srlPrimaryColor="@color/colorMain"
@@ -24,8 +24,10 @@
         app:srlTextFailed="刷新失败"
         app:srlTextUpdate="上次更新 MM-dd HH:mm"
         app:srlTextRefreshing="刷新中..." />
-        <include layout="@layout/info_grid"/>
-
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/info_grid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:textColor="@android:color/black"

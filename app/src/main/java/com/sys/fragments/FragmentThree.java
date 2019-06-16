@@ -23,7 +23,7 @@ public class FragmentThree extends BaseFragment {
         view = inflater.inflate(R.layout.fragment_three, container,false);
         initNavBar(view,false,"three",false);
         smartRefreshLayout = view.findViewById(R.id.refreshLayout);
-        smartRefreshLayout.autoRefresh();
+       // smartRefreshLayout.autoRefresh();
         return view;
     }
 

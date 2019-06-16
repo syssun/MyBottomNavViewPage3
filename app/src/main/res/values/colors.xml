@@ -5,5 +5,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="colorLine">#ABABAB</color>
+    <color name="colorLine">#E8E8E8</color>
+    <color name="colorTextV">#C4C4C4</color>
+    <color name="colorTextL">#858585</color>
+    <color name="colorItemS">#C2C2C2</color>
+    <color name="colorItemV">#F0F0F0</color>
+    <color name="colorWhite">#FFFFFF</color>
 </resources>

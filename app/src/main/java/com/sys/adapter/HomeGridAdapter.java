@@ -55,7 +55,7 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
     }
 
     public void doGet(){
-        String url = "http://wwww.baidu.com";
+        String url = "http://www.baidu.com";
         OkHttpClient okHttpClient = new OkHttpClient();
         final Request request = new Request.Builder()
                 .url(url)

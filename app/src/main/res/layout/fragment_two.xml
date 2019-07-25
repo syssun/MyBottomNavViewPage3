@@ -20,7 +20,6 @@
         android:layout_gravity="center"
         android:textSize="30sp"
         android:gravity="center"
-
         android:text="任务单"/>
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"

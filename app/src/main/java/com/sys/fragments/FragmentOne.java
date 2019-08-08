@@ -54,7 +54,7 @@ public class FragmentOne extends BaseFragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
 
         ArrayList<HomeGrid> homeGrids = new ArrayList<>();
-        homeGrids.add(new HomeGrid(R.mipmap.qianshou,"订单签收"));
+        homeGrids.add(new HomeGrid(R.mipmap.suoping,"锁屏"));
         homeGrids.add(new HomeGrid(R.mipmap.yichang,"异常运单"));
         homeGrids.add(new HomeGrid(R.mipmap.fache,"司机发车"));
         homeGrids.add(new HomeGrid(R.mipmap.huicheng,"司机收车"));

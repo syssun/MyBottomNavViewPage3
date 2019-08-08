@@ -7,6 +7,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!--定义主题，解决白屏 -->
+    <style name="LaunchTheme" parent="AppTheme">
+        <item name="android:windowBackground">@color/colorMain</item>
+    </style>
+
     <!--分割线-->
     <style name="line">
         <item name="android:layout_height">1dp</item>

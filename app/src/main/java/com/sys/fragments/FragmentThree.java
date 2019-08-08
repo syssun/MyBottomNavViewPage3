@@ -21,7 +21,7 @@ public class FragmentThree extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_three, container,false);
-        initNavBar(view,false,"three",false);
+        initNavBar(view,false,"记录",false);
         smartRefreshLayout = view.findViewById(R.id.refreshLayout);
        // smartRefreshLayout.autoRefresh();
         return view;

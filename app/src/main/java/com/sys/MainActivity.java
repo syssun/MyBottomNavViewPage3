@@ -46,7 +46,7 @@ public class MainActivity extends FragmentActivity {
         images.add(R.mipmap.banner_three);
         images.add(R.mipmap.banner_four);
         fragmentOne = FragmentOne.newInstance(images);
-        fragmentTwo=FragmentTwo.newInstance("two");
+        fragmentTwo=FragmentTwo.newInstance("通知");
         fragmentThree = new FragmentThree();
         fragmentFour = new FragmentFour();
         fragments = new Fragment[]{fragmentOne,fragmentTwo,fragmentThree,fragmentFour};

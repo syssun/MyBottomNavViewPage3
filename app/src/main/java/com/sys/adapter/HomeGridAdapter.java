@@ -2,6 +2,8 @@ package com.sys.adapter;
 
 import android.content.Context;
 import android.media.Image;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -16,7 +18,9 @@ import com.sys.R;
 import com.sys.entitys.HomeGrid;
 
 import java.io.IOException;
+import java.net.SocketTimeoutException;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -47,16 +51,25 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
         viewHoler.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doGet();
-                Toast.makeText(context,homeGrid.getTitle(),Toast.LENGTH_SHORT).show();
-
+                doGet(homeGrid.getBaseUrl()+homeGrid.getCtl());
             }
         });
     }
+    private Handler handler =new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            Toast.makeText(context,msg.obj.toString(),Toast.LENGTH_SHORT).show();
+            if(msg.what==0){
+                Toast.makeText(context,msg.obj.toString(),Toast.LENGTH_SHORT).show();
+            }
+        }
+    };
 
-    public void doGet(){
-        String url = "http://www.baidu.com";
-        OkHttpClient okHttpClient = new OkHttpClient();
+    public void doGet(String url){
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                     .connectTimeout(10, TimeUnit.SECONDS)
+                     .readTimeout(20, TimeUnit.SECONDS)
+                     .build();
         final Request request = new Request.Builder()
                 .url(url)
                 .get()//默认就是GET请求，可以不写
@@ -65,13 +78,26 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
         call.enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
+                Message msg = new Message();
+                msg.what = 0;
+                msg.obj="请求失败";
+                handler.sendMessage(msg);
                 Log.d("dogetonfailus", "onFailure: ");
-                Log.getStackTraceString(e);
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                Log.d("doget", "onResponse: " + response.body().string());
+                String str = response.body().string();
+                Message msg = new Message();
+                msg.what = 0;
+                if("1".equals(str)){
+                    //处理完成后给handler发送消息
+                    msg.obj="操作成功";
+                }else{
+                    msg.obj="操作失败";
+                }
+                handler.sendMessage(msg); Log.d("success", "success: ");
+
             }
         });
     }

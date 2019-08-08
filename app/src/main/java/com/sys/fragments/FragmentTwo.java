@@ -56,8 +56,9 @@ public class FragmentTwo extends BaseFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
         mview = inflater.inflate(R.layout.fragment_two, container,false);
-        initNavBar(mview,false,"two",false);
+        initNavBar(mview,false,"通知",false);
         v = mview.findViewById(R.id.two_text);
+        v.setText("通知");
         smartRefreshLayout = mview.findViewById(R.id.refreshLayout);
         //smartRefreshLayout.autoRefresh();
        // smartRefreshLayout.seth
@@ -104,7 +105,7 @@ public class FragmentTwo extends BaseFragment {
         @Override
         public void handleMessage(Message msg) {
            if(msg.what==0){
-               v.setText(msg.obj.toString());
+               //v.setText(msg.obj.toString());
            }
         }
     };

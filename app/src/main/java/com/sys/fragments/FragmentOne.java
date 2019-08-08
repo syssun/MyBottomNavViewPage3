@@ -2,6 +2,8 @@ package com.sys.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -54,15 +56,15 @@ public class FragmentOne extends BaseFragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
 
         ArrayList<HomeGrid> homeGrids = new ArrayList<>();
-        homeGrids.add(new HomeGrid(R.mipmap.suoping,"锁屏"));
-        homeGrids.add(new HomeGrid(R.mipmap.shutdow,"60S关机"));
-        homeGrids.add(new HomeGrid(R.mipmap.canceo,"取消关机"));
-        homeGrids.add(new HomeGrid(R.mipmap.qqo,"打开QQ"));
-        homeGrids.add(new HomeGrid(R.mipmap.qqc,"关闭QQ"));
-        homeGrids.add(new HomeGrid(R.mipmap.wechat,"打开微信"));
-        homeGrids.add(new HomeGrid(R.mipmap.wechatt,"关闭微信"));
-        homeGrids.add(new HomeGrid(R.mipmap.jisuanqi,"计算器"));
-        homeGrids.add(new HomeGrid(R.mipmap.task,"任务管理器"));
+        homeGrids.add(new HomeGrid(R.mipmap.suoping,"锁屏",""));
+        homeGrids.add(new HomeGrid(R.mipmap.shutdow,"60S关机",""));
+        homeGrids.add(new HomeGrid(R.mipmap.canceo,"取消关机",""));
+        homeGrids.add(new HomeGrid(R.mipmap.qqo,"打开QQ",""));
+        homeGrids.add(new HomeGrid(R.mipmap.qqc,"关闭QQ",""));
+        homeGrids.add(new HomeGrid(R.mipmap.jisuanqi,"计算器",""));
+        homeGrids.add(new HomeGrid(R.mipmap.wechat,"打开微信",""));
+        homeGrids.add(new HomeGrid(R.mipmap.wechatt,"关闭微信",""));
+        homeGrids.add(new HomeGrid(R.mipmap.task,"任务管理器",""));
 
         homeGridAdapter = new HomeGridAdapter(getActivity(),homeGrids);
         recyclerView.setAdapter(homeGridAdapter);
@@ -99,4 +101,8 @@ public class FragmentOne extends BaseFragment {
         //结束轮播
         banner.stopAutoPlay();
     }
+
+
+
+
 }

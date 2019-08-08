@@ -1,6 +1,9 @@
 package com.sys.fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -30,16 +33,24 @@ public class FragmentFour extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_four, container,false);
-        initNavBar(view,false,"four",false);
+        initNavBar(view,false,"我的",false);
         recyclerView = view.findViewById(R.id.info_grid);
         smartRefreshLayout = view.findViewById(R.id.f_refreshLayout);
         smartRefreshLayout.setEnableLoadMore(false);//是否启用上拉加载功能
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        infoGrids.add(new InfoGrid("用户名","syssunyues"));
+        infoGrids.add(new InfoGrid("姓名","syssunyues"));
         infoGrids.add(new InfoGrid("公司","极地熊",true));
         infoGrids.add(new InfoGrid("部门","信息部"));
         infoGrids.add(new InfoGrid("性别","男"));
-        infoGrids.add(new InfoGrid("用户ID","0001",true));
+
+        SharedPreferences sharedPreferences = getContext().getSharedPreferences("FILE_NAME", 0);
+        String ip = sharedPreferences.getString("IP","192.168.6.131");
+        String qq = sharedPreferences.getString("QQ","192.168.6.131");
+        String WeChat = sharedPreferences.getString("WeChat","192.168.6.131");
+
+        infoGrids.add(new InfoGrid("IP",ip));
+        infoGrids.add(new InfoGrid("QQ",qq));
+        infoGrids.add(new InfoGrid("WeChat",WeChat));
         infoGridAdapter = new InfoGridAdapter(getActivity(),infoGrids);
         recyclerView.setAdapter(infoGridAdapter);
         return view;

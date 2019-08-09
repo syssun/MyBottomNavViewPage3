@@ -38,19 +38,19 @@ public class FragmentFour extends BaseFragment {
         smartRefreshLayout = view.findViewById(R.id.f_refreshLayout);
         smartRefreshLayout.setEnableLoadMore(false);//是否启用上拉加载功能
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        infoGrids.add(new InfoGrid("姓名","syssunyues"));
-        infoGrids.add(new InfoGrid("公司","极地熊",true));
-        infoGrids.add(new InfoGrid("部门","信息部"));
-        infoGrids.add(new InfoGrid("性别","男"));
+        infoGrids.add(new InfoGrid("name","姓名","syssunyues"));
+        infoGrids.add(new InfoGrid("company","公司","极地熊"));
+        infoGrids.add(new InfoGrid("dept","部门","信息部"));
+        infoGrids.add(new InfoGrid("sex","性别","男"));
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("FILE_NAME", 0);
         String ip = sharedPreferences.getString("IP","192.168.6.131");
         String qq = sharedPreferences.getString("QQ","192.168.6.131");
         String WeChat = sharedPreferences.getString("WeChat","192.168.6.131");
 
-        infoGrids.add(new InfoGrid("IP",ip));
-        infoGrids.add(new InfoGrid("QQ",qq));
-        infoGrids.add(new InfoGrid("WeChat",WeChat));
+        infoGrids.add(new InfoGrid("IP","IP",ip,true));
+        infoGrids.add(new InfoGrid("QQ","QQ",qq,true));
+        infoGrids.add(new InfoGrid("WeChat","WeChat",WeChat,true));
         infoGridAdapter = new InfoGridAdapter(getActivity(),infoGrids);
         recyclerView.setAdapter(infoGridAdapter);
         return view;

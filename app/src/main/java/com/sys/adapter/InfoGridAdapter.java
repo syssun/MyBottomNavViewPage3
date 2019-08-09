@@ -1,6 +1,7 @@
 package com.sys.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,11 +9,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.sys.R;
-import com.sys.entitys.HomeGrid;
+import com.sys.activitys.InfoEditActivity;
 import com.sys.entitys.InfoGrid;
-
 import java.util.ArrayList;
 
 public class InfoGridAdapter extends RecyclerView.Adapter<InfoGridAdapter.ViewHoler> {
@@ -37,6 +36,21 @@ public class InfoGridAdapter extends RecyclerView.Adapter<InfoGridAdapter.ViewHo
             tvlable.setText(infoGrid.getLabel());
             tvvalue.setText(infoGrid.getValue());
             imageView.setVisibility(infoGrid.getFlag()?View.VISIBLE:View.GONE);
+
+            viewHoler.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if("IP".equals(infoGrid.getCode())){
+                        Intent intent = new Intent(context, InfoEditActivity.class);
+                        context.startActivity(intent);
+                    }
+                }
+            });
+
+
+
+
+
     }
 
     @Override

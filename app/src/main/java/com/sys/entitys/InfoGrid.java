@@ -1,27 +1,43 @@
 package com.sys.entitys;
 
 public class InfoGrid {
+    private String code;
     private String label;
     private String value;
     private Integer icon;
     private boolean flag = false;
 
-    public InfoGrid(String label, String value) {
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public boolean isFlag() {
+        return flag;
+    }
+
+    public InfoGrid(String code,String label, String value) {
         this.label = label;
         this.value = value;
+        this.code = code ;
 
     }
-    public InfoGrid(String label, String value,boolean flag) {
+    public InfoGrid(String code,String label, String value,boolean flag) {
         this.label = label;
         this.value = value;
         this.flag = flag ;
+        this.code = code ;
 
     }
-    public InfoGrid(String label, String value, Integer icon, boolean flag) {
+    public InfoGrid(String code,String label, String value, Integer icon, boolean flag) {
         this.label = label;
         this.value = value;
         this.icon = icon;
         this.flag = flag;
+        this.code = code ;
     }
 
     public String getLabel() {

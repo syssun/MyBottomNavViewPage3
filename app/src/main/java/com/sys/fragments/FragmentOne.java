@@ -56,15 +56,16 @@ public class FragmentOne extends BaseFragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(),3));
 
         ArrayList<HomeGrid> homeGrids = new ArrayList<>();
-        homeGrids.add(new HomeGrid(R.mipmap.suoping,"锁屏",""));
-        homeGrids.add(new HomeGrid(R.mipmap.shutdow,"60S关机",""));
-        homeGrids.add(new HomeGrid(R.mipmap.canceo,"取消关机",""));
-        homeGrids.add(new HomeGrid(R.mipmap.qqo,"打开QQ",""));
-        homeGrids.add(new HomeGrid(R.mipmap.qqc,"关闭QQ",""));
-        homeGrids.add(new HomeGrid(R.mipmap.jisuanqi,"计算器",""));
-        homeGrids.add(new HomeGrid(R.mipmap.wechat,"打开微信",""));
-        homeGrids.add(new HomeGrid(R.mipmap.wechatt,"关闭微信",""));
-        homeGrids.add(new HomeGrid(R.mipmap.task,"任务管理器",""));
+        homeGrids.add(new HomeGrid(R.mipmap.suoping,"锁屏","lockscreen"));
+        homeGrids.add(new HomeGrid(R.mipmap.unlock,"解锁","unlockscreen"));
+        homeGrids.add(new HomeGrid(R.mipmap.shutdow,"60S关机","shutdown"));
+        homeGrids.add(new HomeGrid(R.mipmap.canceo,"取消关机","canceshutdow"));
+        homeGrids.add(new HomeGrid(R.mipmap.qqo,"打开QQ","openqq"));
+        homeGrids.add(new HomeGrid(R.mipmap.qqc,"关闭QQ","closeqq"));
+        homeGrids.add(new HomeGrid(R.mipmap.jisuanqi,"计算器","calc"));
+        homeGrids.add(new HomeGrid(R.mipmap.wechat,"打开微信","openwechat"));
+        homeGrids.add(new HomeGrid(R.mipmap.wechatt,"关闭微信","closewechat"));
+        homeGrids.add(new HomeGrid(R.mipmap.task,"任务管理器","taskmgr"));
 
         homeGridAdapter = new HomeGridAdapter(getActivity(),homeGrids);
         recyclerView.setAdapter(homeGridAdapter);

@@ -16,7 +16,7 @@ public class HomeGrid {
     }
 
     public String getBaseUrl() {
-        return baseUrl;
+        return baseUrl="http://192.168.6.131:8080/ctl/";
     }
 
     public void setBaseUrl(String baseUrl) {

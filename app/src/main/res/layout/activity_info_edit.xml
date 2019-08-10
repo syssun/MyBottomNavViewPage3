@@ -10,6 +10,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:touchscreenBlocksFocus="true"
+        android:focusedByDefault="true"
         android:layout_marginTop="@dimen/marginSize"
         android:layout_height="wrap_content">
         <EditText
@@ -17,6 +21,7 @@
             android:layout_marginTop="@dimen/marginSize"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:focusable="true"
             android:hint="请输入"/>
             <EditText
                 android:id="@+id/infoedit_hide"

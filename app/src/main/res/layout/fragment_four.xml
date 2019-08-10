@@ -27,7 +27,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/info_grid"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:listSelector="@android:color/transparent"/>
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:textColor="@android:color/black"

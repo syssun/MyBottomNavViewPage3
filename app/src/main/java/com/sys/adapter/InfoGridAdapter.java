@@ -41,11 +41,12 @@ public class InfoGridAdapter extends RecyclerView.Adapter<InfoGridAdapter.ViewHo
                 @Override
                 public void onClick(View v) {
                     if("IP".equals(infoGrid.getCode())
-                        || "QQ".equals(infoGrid.getCode())
-                        || "WeChat".equals(infoGrid.getCode()) ){
+                            || "QQ".equals(infoGrid.getCode())
+                            || "WeChat".equals(infoGrid.getCode()) ){
                         Intent intent = new Intent(context, InfoEditActivity.class);
                         intent.setAction("info");
                         intent.putExtra("skey",infoGrid.getCode());
+                        intent.putExtra("svalue",infoGrid.getValue());
                         context.startActivity(intent);
                     }
                 }

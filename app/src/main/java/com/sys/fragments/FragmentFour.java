@@ -33,6 +33,11 @@ public class FragmentFour extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_four, container,false);
+       // initview();
+        return view;
+    }
+    void initview(){
+        infoGrids.clear();
         initNavBar(view,false,"我的",false);
         recyclerView = view.findViewById(R.id.info_grid);
         smartRefreshLayout = view.findViewById(R.id.f_refreshLayout);
@@ -53,12 +58,18 @@ public class FragmentFour extends BaseFragment {
         infoGrids.add(new InfoGrid("WeChat","WeChat",WeChat,true));
         infoGridAdapter = new InfoGridAdapter(getActivity(),infoGrids);
         recyclerView.setAdapter(infoGridAdapter);
-        return view;
     }
-
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+    }
+    /**
+     * 每次经页面都会刷新
+     */
+    @Override
+    public void onStart() {
+        super.onStart();
+        initview();
     }
 }

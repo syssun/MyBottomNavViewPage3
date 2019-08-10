@@ -18,7 +18,14 @@ public class BaseActivity extends Activity {
         navback.setVisibility(ishowback?View.VISIBLE:View.GONE);
         navuser.setVisibility(isuser?View.VISIBLE:View.GONE);
         titlev.setText(title);
+        navback.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
+
     protected <T extends View> T fd(@IdRes int id){
         return findViewById(id);
     }

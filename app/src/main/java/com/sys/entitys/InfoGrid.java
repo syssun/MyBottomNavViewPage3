@@ -1,5 +1,7 @@
 package com.sys.entitys;
 
+import com.alibaba.fastjson.JSONObject;
+
 public class InfoGrid {
     private String code;
     private String label;
@@ -70,5 +72,10 @@ public class InfoGrid {
 
     public void setFlag(boolean flag) {
         this.flag = flag;
+    }
+
+    @Override
+    public String toString() {
+        return JSONObject.toJSONString(this);
     }
 }

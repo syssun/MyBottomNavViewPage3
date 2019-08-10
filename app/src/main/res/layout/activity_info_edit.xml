@@ -4,6 +4,31 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".activitys.InfoEditActivity">
-
+    <include layout="@layout/nav_bar"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/marginSize"
+        android:layout_height="wrap_content">
+        <EditText
+            android:id="@+id/infoedit_input"
+            android:layout_marginTop="@dimen/marginSize"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="请输入"/>
+            <EditText
+                android:id="@+id/infoedit_hide"
+                android:layout_marginTop="@dimen/marginSize"
+                android:layout_width="match_parent"
+                android:visibility="gone"
+                android:layout_height="wrap_content" />
+                <Button
+                    style="@style/btnCommit"
+                    android:text="确认"
+                    android:layout_marginTop="@dimen/marginSize"
+                    android:textSize="@dimen/navTextSize"
+                    android:onClick="onClick"/>
+    </LinearLayout>
 </LinearLayout>

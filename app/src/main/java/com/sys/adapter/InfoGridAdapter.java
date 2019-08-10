@@ -32,7 +32,7 @@ public class InfoGridAdapter extends RecyclerView.Adapter<InfoGridAdapter.ViewHo
 
     @Override
     public void onBindViewHolder(@NonNull ViewHoler viewHoler, int i) {
-            InfoGrid infoGrid = infoGrids.get(i);
+            final InfoGrid infoGrid = infoGrids.get(i);
             tvlable.setText(infoGrid.getLabel());
             tvvalue.setText(infoGrid.getValue());
             imageView.setVisibility(infoGrid.getFlag()?View.VISIBLE:View.GONE);
@@ -40,17 +40,16 @@ public class InfoGridAdapter extends RecyclerView.Adapter<InfoGridAdapter.ViewHo
             viewHoler.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if("IP".equals(infoGrid.getCode())){
+                    if("IP".equals(infoGrid.getCode())
+                        || "QQ".equals(infoGrid.getCode())
+                        || "WeChat".equals(infoGrid.getCode()) ){
                         Intent intent = new Intent(context, InfoEditActivity.class);
+                        intent.setAction("info");
+                        intent.putExtra("skey",infoGrid.getCode());
                         context.startActivity(intent);
                     }
                 }
             });
-
-
-
-
-
     }
 
     @Override

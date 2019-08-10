@@ -14,6 +14,7 @@
         android:focusableInTouchMode="true"
         android:touchscreenBlocksFocus="true"
         android:focusedByDefault="true"
+
         android:layout_marginTop="@dimen/marginSize"
         android:layout_height="wrap_content">
         <EditText

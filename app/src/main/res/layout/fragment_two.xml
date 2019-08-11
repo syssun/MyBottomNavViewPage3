@@ -4,6 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/webview_pro_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
     <include layout="@layout/nav_bar"/>
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
@@ -13,15 +18,12 @@
         app:srlAccentColor="@android:color/background_dark"
         >
 
-    <TextView
-        android:id="@+id/two_text"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:text="任务单"/>
-        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
+        <WebView
+            android:id="@+id/mywebview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <!--<com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:textColor="@android:color/black"
             android:layout_height="wrap_content"
@@ -31,6 +33,6 @@
             app:srlTextRefreshing="等待头部刷新完成…"
             app:srlTextFinish="加载完成"
             app:srlTextFailed="加载失败"
-            app:srlTextNothing="没有更多数据了"/>
+            app:srlTextNothing="没有更多数据了"/>-->
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 </LinearLayout>

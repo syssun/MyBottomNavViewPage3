@@ -4,6 +4,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_height="match_parent">
+    <ProgressBar
+        style="?android:attr/progressBarStyleHorizontal"
+        android:id="@+id/webview_pro_bar"
+        android:layout_width="match_parent"
+        android:layout_height="1dp" />
     <include layout="@layout/nav_bar"/>
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"
@@ -24,13 +29,10 @@
             app:srlTextFailed="刷新失败"
             app:srlTextUpdate="上次更新 MM-dd HH:mm"
             app:srlTextRefreshing="刷新中..." />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:text="历史纪录"/>
+        <WebView
+            android:id="@+id/thwebview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
         <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:textColor="@android:color/black"

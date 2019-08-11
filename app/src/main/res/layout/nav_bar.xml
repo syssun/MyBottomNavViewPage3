@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:src="@mipmap/fanhui"
+        android:background="@drawable/btn_commit_select"
         android:layout_gravity="center|left"
         />
 
@@ -29,5 +30,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center|right"
         android:src="@mipmap/user"
+        android:background="@drawable/btn_commit_select"
         />
 </FrameLayout>

@@ -1,6 +1,7 @@
 package com.sys.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -13,10 +14,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.sys.R;
 import com.sys.activitys.BaseFragment;
+import com.sys.activitys.LoginActivity;
 import com.sys.adapter.InfoGridAdapter;
 import com.sys.entitys.HomeGrid;
 import com.sys.entitys.InfoGrid;
@@ -26,6 +29,7 @@ import java.util.ArrayList;
 public class FragmentFour extends BaseFragment {
     View view;
     RecyclerView recyclerView;
+    Button logout;
     InfoGridAdapter infoGridAdapter;
     ArrayList<InfoGrid> infoGrids = new ArrayList<>();
     SmartRefreshLayout smartRefreshLayout;
@@ -40,6 +44,7 @@ public class FragmentFour extends BaseFragment {
         infoGrids.clear();
         initNavBar(view,false,"我的",false);
         recyclerView = view.findViewById(R.id.info_grid);
+        logout = view.findViewById(R.id.btn_logout);
         smartRefreshLayout = view.findViewById(R.id.f_refreshLayout);
         smartRefreshLayout.setEnableLoadMore(false);//是否启用上拉加载功能
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -58,6 +63,21 @@ public class FragmentFour extends BaseFragment {
         infoGrids.add(new InfoGrid("WeChat","WeChat",WeChat,true));
         infoGridAdapter = new InfoGridAdapter(getActivity(),infoGrids);
         recyclerView.setAdapter(infoGridAdapter);
+
+
+
+        logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+                getActivity().finish();
+            }
+        });
+
+
+
+
+
     }
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -72,4 +92,7 @@ public class FragmentFour extends BaseFragment {
         super.onStart();
         initview();
     }
+
+
+
 }

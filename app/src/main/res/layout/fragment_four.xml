@@ -8,7 +8,7 @@
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/f_refreshLayout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         app:srlPrimaryColor="@color/colorMain"
         app:srlAccentColor="@android:color/background_dark"
         >
@@ -28,17 +28,15 @@
             android:id="@+id/info_grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:listSelector="@android:color/transparent"/>
-        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
-            android:layout_width="match_parent"
-            android:textColor="@android:color/black"
-            android:layout_height="wrap_content"
-            app:srlTextPulling="上拉加载更多"
-            app:srlTextRelease="释放立即加载"
-            app:srlTextLoading="正在加载…"
-            app:srlTextRefreshing="等待头部刷新完成…"
-            app:srlTextFinish="加载完成"
-            app:srlTextFailed="加载失败"
-            app:srlTextNothing="没有更多数据了"/>
+            />
+
+
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+    <Button
+        android:id="@+id/btn_logout"
+        style="@style/btnCommit"
+        android:text="退出登录"
+        android:background="@color/colorAccent"
+        android:textSize="@dimen/navTextSize"
+        />
 </LinearLayout>

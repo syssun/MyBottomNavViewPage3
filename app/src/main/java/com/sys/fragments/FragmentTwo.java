@@ -19,6 +19,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sys.R;
 import com.sys.activitys.BaseFragment;
 import com.sys.views.LoadingFrame;
@@ -68,6 +70,7 @@ public class FragmentTwo extends BaseFragment {
        /// v = mview.findViewById(R.id.two_text);
         //v.setText("通知");
         smartRefreshLayout = mview.findViewById(R.id.refreshLayout);
+       // smartRefreshLayout.autoRefresh();
 
         progressBar = mview.findViewById(R.id.webview_pro_bar);
         progressBar.setMax(100);
@@ -76,6 +79,18 @@ public class FragmentTwo extends BaseFragment {
         webView = mview.findViewById(R.id.mywebview);
         initWebView(webView);
         initWebViewSettings(webView);
+
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                progressBar.setVisibility(View.VISIBLE);
+                webView.reload();
+                //smartRefreshLayout.finishRefresh();
+            }
+        });
+
+
+
         return mview;
     }
 
@@ -88,6 +103,7 @@ public class FragmentTwo extends BaseFragment {
                 progressBar.setProgress(newProgress);
                 if(newProgress>=100){
                     progressBar.setVisibility(View.GONE);
+                    smartRefreshLayout.finishRefresh();
                 }
             }
         });

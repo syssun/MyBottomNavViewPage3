@@ -42,7 +42,8 @@ public class InfoGridAdapter extends RecyclerView.Adapter<InfoGridAdapter.ViewHo
                 public void onClick(View v) {
                     if("IP".equals(infoGrid.getCode())
                             || "QQ".equals(infoGrid.getCode())
-                            || "WeChat".equals(infoGrid.getCode()) ){
+                            || "WeChat".equals(infoGrid.getCode())
+                            || "autoctl".equals(infoGrid.getCode()) ){
                         Intent intent = new Intent(context, InfoEditActivity.class);
                         intent.setAction("info");
                         intent.putExtra("skey",infoGrid.getCode());

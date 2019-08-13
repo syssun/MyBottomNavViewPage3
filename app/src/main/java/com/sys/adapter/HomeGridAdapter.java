@@ -1,6 +1,7 @@
 package com.sys.adapter;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Handler;
 import android.os.Message;
@@ -51,7 +52,16 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
         viewHoler.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                doGet(homeGrid.getBaseUrl()+homeGrid.getCtl());
+                //autoct
+                String apendstr="";
+                if("autoctl".equals(homeGrid)){
+                    SharedPreferences sharedPreferences = context.getSharedPreferences("FILE_NAME", 0);
+                    apendstr = sharedPreferences.getString("autoctl","control");
+                }
+                if(apendstr !="")
+                    doGet(homeGrid.getBaseUrl()+homeGrid.getCtl()+"?ctl="+apendstr);
+                else
+                    doGet(homeGrid.getBaseUrl()+homeGrid.getCtl());
             }
         });
     }

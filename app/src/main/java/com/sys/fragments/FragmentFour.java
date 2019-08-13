@@ -55,12 +55,14 @@ public class FragmentFour extends BaseFragment {
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("FILE_NAME", 0);
         String ip = sharedPreferences.getString("IP","192.168.6.131");
-        String qq = sharedPreferences.getString("QQ","192.168.6.131");
-        String WeChat = sharedPreferences.getString("WeChat","192.168.6.131");
+        String qq = sharedPreferences.getString("QQ","");
+        String WeChat = sharedPreferences.getString("WeChat","");
+        String autoctl = sharedPreferences.getString("autoctl","");
 
         infoGrids.add(new InfoGrid("IP","IP",ip,true));
         infoGrids.add(new InfoGrid("QQ","QQ",qq,true));
         infoGrids.add(new InfoGrid("WeChat","WeChat",WeChat,true));
+        infoGrids.add(new InfoGrid("autoctl","其它命令",autoctl,true));
         infoGridAdapter = new InfoGridAdapter(getActivity(),infoGrids);
         recyclerView.setAdapter(infoGridAdapter);
 

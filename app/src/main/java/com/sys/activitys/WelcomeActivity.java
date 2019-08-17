@@ -25,7 +25,7 @@ public class WelcomeActivity extends Activity {
              public void run() {
                  toMain();
              }
-         }, 2000);
+         }, 500);
     }
 
     public void toMain(){

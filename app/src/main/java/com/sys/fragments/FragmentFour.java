@@ -17,6 +17,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sys.R;
 import com.sys.activitys.BaseFragment;
 import com.sys.activitys.LoginActivity;
@@ -59,6 +61,7 @@ public class FragmentFour extends BaseFragment {
         String WeChat = sharedPreferences.getString("WeChat","");
         String autoctl = sharedPreferences.getString("autoctl","");
 
+        infoGrids.add(new InfoGrid("PORT","PORT","8080",false));
         infoGrids.add(new InfoGrid("IP","IP",ip,true));
         infoGrids.add(new InfoGrid("QQ","QQ",qq,true));
         infoGrids.add(new InfoGrid("WeChat","WeChat",WeChat,true));
@@ -76,7 +79,13 @@ public class FragmentFour extends BaseFragment {
             }
         });
 
-
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                initview();
+                smartRefreshLayout.finishRefresh();
+            }
+        });
 
 
 

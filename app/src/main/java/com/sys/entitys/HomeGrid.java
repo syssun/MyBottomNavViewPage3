@@ -5,7 +5,17 @@ public class HomeGrid {
     private Integer iamge;
     private String title;
     private String ctl;
-    private String baseUrl = "http://192.168.6.131:8080/ctl/";
+    private String ip;
+
+    public String getIp() {
+        return ip;
+    }
+
+    public void setIp(String ip) {
+        this.ip = ip;
+    }
+
+    private String baseUrl;
 
     public String getCtl() {
         return ctl;
@@ -16,7 +26,7 @@ public class HomeGrid {
     }
 
     public String getBaseUrl() {
-        return baseUrl="http://192.168.6.131:8080/ctl/";
+        return baseUrl="http://"+getIp()+":8080/ctl/";
     }
 
     public void setBaseUrl(String baseUrl) {

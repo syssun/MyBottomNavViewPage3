@@ -66,8 +66,8 @@ public class FragmentOne extends BaseFragment {
         homeGrids.add(new HomeGrid(R.mipmap.wechat,"打开微信","openwechat"));
         homeGrids.add(new HomeGrid(R.mipmap.wechatt,"关闭微信","closewechat"));
         homeGrids.add(new HomeGrid(R.mipmap.task,"任务管理器","taskmgr"));
-        homeGrids.add(new HomeGrid(R.mipmap.task,"系统睡眠","seleep"));
-        homeGrids.add(new HomeGrid(R.mipmap.task,"其他命令","autoctl"));
+        homeGrids.add(new HomeGrid(R.mipmap.seleep,"系统睡眠","seleep"));
+        homeGrids.add(new HomeGrid(R.mipmap.other,"其他命令","autoctl"));
 
         homeGridAdapter = new HomeGridAdapter(getActivity(),homeGrids);
         recyclerView.setAdapter(homeGridAdapter);

@@ -15,6 +15,8 @@ import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
 import com.sys.R;
 import com.sys.activitys.BaseFragment;
 import com.sys.views.LoadingFrame;
@@ -50,6 +52,15 @@ public class FragmentThree extends BaseFragment {
         webView.setWebViewClient(new WebViewClient());
         webView.getSettings().setJavaScriptEnabled(true);
         webView.loadUrl("https://www.imooc.com/");
+
+        smartRefreshLayout.setOnRefreshListener(new OnRefreshListener() {
+            @Override
+            public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                progressBar.setVisibility(View.VISIBLE);
+                webView.reload();
+                smartRefreshLayout.finishRefresh();
+            }
+        });
 
         return view;
     }

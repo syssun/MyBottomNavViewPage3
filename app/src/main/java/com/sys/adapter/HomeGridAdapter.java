@@ -19,7 +19,10 @@ import com.sys.R;
 import com.sys.entitys.HomeGrid;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.SocketTimeoutException;
+import java.net.URLDecoder;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
@@ -54,14 +57,46 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
             public void onClick(View v) {
                 //autoct
                 String apendstr="";
-                if("autoctl".equals(homeGrid)){
-                    SharedPreferences sharedPreferences = context.getSharedPreferences("FILE_NAME", 0);
+                SharedPreferences sharedPreferences = context.getSharedPreferences("FILE_NAME", 0);
+                String ip = sharedPreferences.getString("IP","");
+                String qq = sharedPreferences.getString("QQ","");
+                String WeChat = sharedPreferences.getString("WeChat","");
+                if(ip==null || "".equals(ip)){
+                    Toast.makeText(context,"请先维护API-IP",Toast.LENGTH_SHORT).show();
+                    return ;
+                }
+                //openqq  openwechat
+                homeGrid.setIp(ip);
+                if("autoctl".equals(homeGrid.getCtl())){
                     apendstr = sharedPreferences.getString("autoctl","control");
                 }
-                if(apendstr !="")
-                    doGet(homeGrid.getBaseUrl()+homeGrid.getCtl()+"?ctl="+apendstr);
-                else
-                    doGet(homeGrid.getBaseUrl()+homeGrid.getCtl());
+                if("openqq".equals(homeGrid.getCtl())){
+                    apendstr = qq;
+                    if(apendstr==null || "".equals(apendstr)){
+                        Toast.makeText(context,"请先维护QQ安装路径",Toast.LENGTH_SHORT).show();
+                        return ;
+                    }
+                }
+                if("openwechat".equals(homeGrid.getCtl())){
+                    apendstr = WeChat;
+                    if(apendstr==null || "".equals(apendstr)){
+                        Toast.makeText(context,"请先维护Wechat安装路径",Toast.LENGTH_SHORT).show();
+                        return ;
+                    }
+                }
+                if(apendstr !="") {
+                    try {
+                        apendstr = URLEncoder.encode(apendstr,"UTF-8");
+
+                    } catch (UnsupportedEncodingException e) {
+
+                    }
+                    doGet(homeGrid.getBaseUrl() + "autoctl?ctl=" + apendstr);
+                }
+                else {
+                    doGet(homeGrid.getBaseUrl() + homeGrid.getCtl());
+                }
+                Log.d("sysinfo",apendstr);
             }
         });
     }
@@ -82,6 +117,7 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
                      .build();
         final Request request = new Request.Builder()
                 .url(url)
+
                 .get()//默认就是GET请求，可以不写
                 .build();
         Call call = okHttpClient.newCall(request);

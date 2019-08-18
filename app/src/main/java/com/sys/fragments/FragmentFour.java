@@ -39,7 +39,7 @@ public class FragmentFour extends BaseFragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_four, container,false);
-       // initview();
+        initview();
         return view;
     }
     void initview(){
@@ -101,7 +101,7 @@ public class FragmentFour extends BaseFragment {
     @Override
     public void onStart() {
         super.onStart();
-        initview();
+        smartRefreshLayout.autoRefresh();
     }
 
 

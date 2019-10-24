@@ -7,15 +7,24 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.sys.activitys.BaseActivity;
 import com.sys.activitys.BaseFragment;
 import com.sys.adapter.ViewPagerAdapter;
+import com.sys.entitys.MessageClient;
+import com.sys.entitys.MessageServer;
 import com.sys.fragments.FragmentFour;
 import com.sys.fragments.FragmentOne;
 import com.sys.fragments.FragmentThree;
 import com.sys.fragments.FragmentTwo;
+import com.sys.utils.TcpClient;
+
+import org.greenrobot.eventbus.EventBus;
+import org.greenrobot.eventbus.Subscribe;
+import org.greenrobot.eventbus.ThreadMode;
 
 import java.util.ArrayList;
 import java.util.Timer;
@@ -37,8 +46,13 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.activity_main);
         initData();
         initView();
-
+        //注册EventBus
+        EventBus.getDefault().register(this);
+        //链接服务端
+        TcpClient.startClient( "localhost", 9088);
     }
+
+
     private void initData() {
         ArrayList<Integer> images = new ArrayList<Integer>();
         images.add(R.mipmap.banner_one);
@@ -104,6 +118,20 @@ public class MainActivity extends FragmentActivity {
             transaction.add(R.id.FramePage,fragments[index]);
         }
         transaction.show(fragments[index]).commitAllowingStateLoss();
+    }
+
+
+    //收到服务器的消息
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    public void MessageServer(MessageServer messageEvent) {
+        Log.d("收到服务端:" ,messageEvent.getMsg());
+        Toast.makeText(this,messageEvent.getMsg(),Toast.LENGTH_SHORT).show();
+    }
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    //收到客户端的消息
+    public void MessageClient(MessageClient messageEvent) {
+        Log.d("客户端收到:" ,messageEvent.getMsg());
+        Toast.makeText(this,messageEvent.getMsg(),Toast.LENGTH_SHORT).show();
     }
 
 }

@@ -18,10 +18,10 @@
         <TextView
             android:id="@+id/tv_label"
             android:layout_width="0dp"
-            android:layout_weight="2"
+            android:layout_weight="6"
             android:layout_height="match_parent"
             android:layout_gravity="center_vertical|left"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:textColor="@color/colorTextL"
             android:text="用户名"/>
         <TextView
@@ -32,17 +32,17 @@
             android:layout_gravity="center_vertical|right"
             android:gravity="right|center_vertical"
             android:paddingRight="10dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:lines="1"
             android:textColor="@color/colorTextV"
 
             android:text="sunyues"/>
         <ImageView
             android:id="@+id/info_more"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
             android:layout_gravity="right|center_vertical"
-            android:src="@mipmap/jiantou"
+            android:src="@mipmap/online"
             />
     </LinearLayout>
 

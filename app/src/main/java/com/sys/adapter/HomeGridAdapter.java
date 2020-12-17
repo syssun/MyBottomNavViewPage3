@@ -17,6 +17,8 @@ import android.widget.Toast;
 
 import com.sys.R;
 import com.sys.entitys.HomeGrid;
+import com.sys.socket.SendMsg;
+import com.sys.socket.SocketClient;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -37,6 +39,7 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
     ImageView imageView;
     TextView textView;
     ArrayList<HomeGrid> homeGrids;
+
     public HomeGridAdapter (Context context,ArrayList<HomeGrid> homeGrids){
         this.context = context;
         this.homeGrids = homeGrids;
@@ -55,48 +58,8 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
         viewHoler.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //autoct
-                String apendstr="";
-                SharedPreferences sharedPreferences = context.getSharedPreferences("FILE_NAME", 0);
-                String ip = sharedPreferences.getString("IP","");
-                String qq = sharedPreferences.getString("QQ","");
-                String WeChat = sharedPreferences.getString("WeChat","");
-                if(ip==null || "".equals(ip)){
-                    Toast.makeText(context,"请先维护API-IP",Toast.LENGTH_SHORT).show();
-                    return ;
-                }
-                //openqq  openwechat
-                homeGrid.setIp(ip);
-                if("autoctl".equals(homeGrid.getCtl())){
-                    apendstr = sharedPreferences.getString("autoctl","control");
-                }
-                if("openqq".equals(homeGrid.getCtl())){
-                    apendstr = qq;
-                    if(apendstr==null || "".equals(apendstr)){
-                        Toast.makeText(context,"请先维护QQ安装路径",Toast.LENGTH_SHORT).show();
-                        return ;
-                    }
-                }
-                if("openwechat".equals(homeGrid.getCtl())){
-                    apendstr = WeChat;
-                    if(apendstr==null || "".equals(apendstr)){
-                        Toast.makeText(context,"请先维护Wechat安装路径",Toast.LENGTH_SHORT).show();
-                        return ;
-                    }
-                }
-                if(apendstr !="") {
-                    try {
-                        apendstr = URLEncoder.encode(apendstr,"UTF-8");
+                SendMsg.lockScreen(homeGrid.getCtl());
 
-                    } catch (UnsupportedEncodingException e) {
-
-                    }
-                    doGet(homeGrid.getBaseUrl() + "autoctl?ctl=" + apendstr);
-                }
-                else {
-                    doGet(homeGrid.getBaseUrl() + homeGrid.getCtl());
-                }
-                Log.d("sysinfo",apendstr);
             }
         });
     }
@@ -109,53 +72,12 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
             }
         }
     };
-
-    public void doGet(String url){
-        OkHttpClient okHttpClient = new OkHttpClient.Builder()
-                     .connectTimeout(10, TimeUnit.SECONDS)
-                     .readTimeout(20, TimeUnit.SECONDS)
-                     .build();
-        final Request request = new Request.Builder()
-                .url(url)
-
-                .get()//默认就是GET请求，可以不写
-                .build();
-        Call call = okHttpClient.newCall(request);
-        call.enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Message msg = new Message();
-                msg.what = 0;
-                msg.obj="请求失败";
-                handler.sendMessage(msg);
-                Log.d("dogetonfailus", "onFailure: ");
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String str = response.body().string();
-                Message msg = new Message();
-                msg.what = 0;
-                if("1".equals(str)){
-                    //处理完成后给handler发送消息
-                    msg.obj="操作成功";
-                }else{
-                    msg.obj="操作失败";
-                }
-                handler.sendMessage(msg); Log.d("success", "success: ");
-
-            }
-        });
-    }
-
-
     @Override
     public int getItemCount() {
         return homeGrids.size();
     }
 
     class ViewHoler extends RecyclerView.ViewHolder{
-
         public ViewHoler(@NonNull View itemView) {
             super(itemView);
             imageView = itemView.findViewById(R.id.grid_img);

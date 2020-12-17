@@ -16,7 +16,7 @@
     app:srlEnablePreviewInEditMode="true"-->
     <com.scwang.smartrefresh.layout.header.ClassicsHeader
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         app:srlTextPulling="下拉刷新"
         app:srlTextLoading="等待底部加载完成…"
         app:srlTextRelease="松开刷新"
@@ -32,11 +32,5 @@
 
 
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
-    <Button
-        android:id="@+id/btn_logout"
-        style="@style/btnCommit"
-        android:text="退出登录"
-        android:background="@color/colorAccent"
-        android:textSize="@dimen/navTextSize"
-        />
+
 </LinearLayout>

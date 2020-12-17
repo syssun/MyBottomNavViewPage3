@@ -2,6 +2,7 @@ package com.sys.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -36,7 +37,11 @@ public class InfoGridAdapter extends RecyclerView.Adapter<InfoGridAdapter.ViewHo
             tvlable.setText(infoGrid.getLabel());
             tvvalue.setText(infoGrid.getValue());
             imageView.setVisibility(infoGrid.getFlag()?View.VISIBLE:View.GONE);
-
+            if(infoGrid.getFlag()){
+                tvvalue.setTextColor(Color.GREEN);
+            }else{
+                tvvalue.setTextColor(Color.GRAY);
+            }
             viewHoler.itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

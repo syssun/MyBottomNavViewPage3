@@ -37,7 +37,7 @@ public class MainActivity extends FragmentActivity {
     FragmentOne fragmentOne;
     FragmentTwo fragmentTwo;
     FragmentThree fragmentThree;
-    FragmentFour fragmentFour;
+    public static FragmentFour fragmentFour;
     private Fragment[] fragments;
     private int lastfragment;//用于记录上个选择的Fragment
     @Override

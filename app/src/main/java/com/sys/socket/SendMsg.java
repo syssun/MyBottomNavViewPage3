@@ -19,6 +19,4 @@ public class SendMsg {
         Log.d("AAA","发送pc-close指令");
     }
 
-
-
 }

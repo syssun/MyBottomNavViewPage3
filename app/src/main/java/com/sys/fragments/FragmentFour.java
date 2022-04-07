@@ -50,13 +50,13 @@ public class FragmentFour extends BaseFragment {
         smartRefreshLayout = view.findViewById(R.id.f_refreshLayout);
         smartRefreshLayout.setEnableLoadMore(false);//是否启用上拉加载功能
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        infoGrids.add(new InfoGrid("name","姓名","syssunyues"));
-        infoGrids.add(new InfoGrid("company","公司","极地熊"));
-        infoGrids.add(new InfoGrid("dept","部门","信息部"));
+        infoGrids.add(new InfoGrid("name","姓名","sunys"));
+        infoGrids.add(new InfoGrid("company","公司","交科数智"));
+        infoGrids.add(new InfoGrid("dept","部门","研发部"));
         infoGrids.add(new InfoGrid("sex","性别","男"));
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("FILE_NAME", 0);
-        String ip = sharedPreferences.getString("IP","192.168.6.131");
+        String ip = sharedPreferences.getString("IP","127.0.0.1");
         String port = sharedPreferences.getString("PORT","");
         String qq = sharedPreferences.getString("QQ","");
         String WeChat = sharedPreferences.getString("WeChat","");

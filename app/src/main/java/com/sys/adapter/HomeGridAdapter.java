@@ -60,13 +60,19 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
                 SharedPreferences sharedPreferences = context.getSharedPreferences("FILE_NAME", 0);
                 String ip = sharedPreferences.getString("IP","");
                 String qq = sharedPreferences.getString("QQ","");
+                String port = sharedPreferences.getString("PORT","");
                 String WeChat = sharedPreferences.getString("WeChat","");
+                if(port==null || "".equals(port)){
+                    Toast.makeText(context,"请先维护API-port",Toast.LENGTH_SHORT).show();
+                    return ;
+                }
                 if(ip==null || "".equals(ip)){
                     Toast.makeText(context,"请先维护API-IP",Toast.LENGTH_SHORT).show();
                     return ;
                 }
                 //openqq  openwechat
                 homeGrid.setIp(ip);
+                homeGrid.setPort(port);
                 if("autoctl".equals(homeGrid.getCtl())){
                     apendstr = sharedPreferences.getString("autoctl","control");
                 }
@@ -129,11 +135,13 @@ public class HomeGridAdapter extends RecyclerView.Adapter<HomeGridAdapter.ViewHo
                 msg.obj="请求失败";
                 handler.sendMessage(msg);
                 Log.d("dogetonfailus", "onFailure: ");
+                e.printStackTrace();
             }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String str = response.body().string();
+                Log.d("aaa",str);
                 Message msg = new Message();
                 msg.what = 0;
                 if("1".equals(str)){

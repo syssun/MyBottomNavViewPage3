@@ -35,8 +35,8 @@ public class MainActivity extends FragmentActivity {
     private MenuItem menuItem;
     private BottomNavigationView bottomNavigationView;
     FragmentOne fragmentOne;
-    FragmentTwo fragmentTwo;
-    FragmentThree fragmentThree;
+   // FragmentTwo fragmentTwo;
+    //FragmentThree fragmentThree;
     FragmentFour fragmentFour;
     private Fragment[] fragments;
     private int lastfragment;//用于记录上个选择的Fragment
@@ -47,23 +47,20 @@ public class MainActivity extends FragmentActivity {
         initData();
         initView();
         //注册EventBus
-        EventBus.getDefault().register(this);
+        //EventBus.getDefault().register(this);
         //链接服务端
-        TcpClient.startClient( "localhost", 9088);
+        //TcpClient.startClient( "localhost", 9088);
     }
 
 
     private void initData() {
         ArrayList<Integer> images = new ArrayList<Integer>();
-        images.add(R.mipmap.banner_one);
-        images.add(R.mipmap.banner_two);
-        images.add(R.mipmap.banner_three);
         images.add(R.mipmap.banner_four);
         fragmentOne = FragmentOne.newInstance(images);
-        fragmentTwo=FragmentTwo.newInstance("通知");
-        fragmentThree = new FragmentThree();
+        //fragmentTwo=FragmentTwo.newInstance("通知");
+       // fragmentThree = new FragmentThree();
         fragmentFour = new FragmentFour();
-        fragments = new Fragment[]{fragmentOne,fragmentTwo,fragmentThree,fragmentFour};
+        fragments = new Fragment[]{fragmentOne,fragmentFour};
         lastfragment=0;
     }
     private void initView() {
@@ -85,24 +82,11 @@ public class MainActivity extends FragmentActivity {
                         lastfragment=0;
                     }
                     return true;
-                case R.id.navigation_dashboard:
+//
+                case R.id.navigation_donut:
                     if(lastfragment!=1){
                         switchFragment(lastfragment,1);
                         lastfragment=1;
-                    }
-
-                    return true;
-                case R.id.navigation_notifications:
-                    if(lastfragment!=2){
-                        switchFragment(lastfragment,2);
-                        lastfragment=2;
-                    }
-
-                    return true;
-                case R.id.navigation_donut:
-                    if(lastfragment!=3){
-                        switchFragment(lastfragment,3);
-                        lastfragment=3;
                     }
                     return true;
             }

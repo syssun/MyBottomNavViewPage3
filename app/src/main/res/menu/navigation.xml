@@ -7,15 +7,6 @@
         android:title="首页" />
 
     <item
-        android:id="@+id/navigation_dashboard"
-        android:icon="@drawable/ic_dashboard_black_24dp"
-        android:title="百度" />
-
-    <item
-        android:id="@+id/navigation_notifications"
-        android:icon="@drawable/ic_notifications_black_24dp"
-        android:title="记录" />
-    <item
         android:id="@+id/navigation_donut"
         android:icon="@drawable/ic_donut_black_24dp"
         android:title="我的" />

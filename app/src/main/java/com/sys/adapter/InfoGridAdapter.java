@@ -41,6 +41,7 @@ public class InfoGridAdapter extends RecyclerView.Adapter<InfoGridAdapter.ViewHo
                 @Override
                 public void onClick(View v) {
                     if("IP".equals(infoGrid.getCode())
+                            || "PORT".equals(infoGrid.getCode())
                             || "QQ".equals(infoGrid.getCode())
                             || "WeChat".equals(infoGrid.getCode())
                             || "autoctl".equals(infoGrid.getCode()) ){

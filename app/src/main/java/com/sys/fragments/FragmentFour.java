@@ -57,11 +57,12 @@ public class FragmentFour extends BaseFragment {
 
         SharedPreferences sharedPreferences = getContext().getSharedPreferences("FILE_NAME", 0);
         String ip = sharedPreferences.getString("IP","192.168.6.131");
+        String port = sharedPreferences.getString("PORT","");
         String qq = sharedPreferences.getString("QQ","");
         String WeChat = sharedPreferences.getString("WeChat","");
         String autoctl = sharedPreferences.getString("autoctl","");
 
-        infoGrids.add(new InfoGrid("PORT","PORT","8080",false));
+        infoGrids.add(new InfoGrid("PORT","PORT",port,true));
         infoGrids.add(new InfoGrid("IP","IP",ip,true));
         infoGrids.add(new InfoGrid("QQ","QQ",qq,true));
         infoGrids.add(new InfoGrid("WeChat","WeChat",WeChat,true));

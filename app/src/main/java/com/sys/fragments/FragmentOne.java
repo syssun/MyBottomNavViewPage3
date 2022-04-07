@@ -57,7 +57,6 @@ public class FragmentOne extends BaseFragment {
 
         ArrayList<HomeGrid> homeGrids = new ArrayList<>();
         homeGrids.add(new HomeGrid(R.mipmap.suoping,"锁屏","lockscreen"));
-        homeGrids.add(new HomeGrid(R.mipmap.unlock,"解锁","unlockscreen"));
         homeGrids.add(new HomeGrid(R.mipmap.shutdow,"60S关机","shutdown"));
         homeGrids.add(new HomeGrid(R.mipmap.canceo,"取消关机","canceshutdow"));
         homeGrids.add(new HomeGrid(R.mipmap.qqo,"打开QQ","openqq"));
@@ -67,7 +66,6 @@ public class FragmentOne extends BaseFragment {
         homeGrids.add(new HomeGrid(R.mipmap.wechatt,"关闭微信","closewechat"));
         homeGrids.add(new HomeGrid(R.mipmap.task,"任务管理器","taskmgr"));
         homeGrids.add(new HomeGrid(R.mipmap.seleep,"系统睡眠","seleep"));
-        homeGrids.add(new HomeGrid(R.mipmap.other,"其他命令","autoctl"));
 
         homeGridAdapter = new HomeGridAdapter(getActivity(),homeGrids);
         recyclerView.setAdapter(homeGridAdapter);

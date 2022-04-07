@@ -6,9 +6,18 @@ public class HomeGrid {
     private String title;
     private String ctl;
     private String ip;
+    private String port ;
 
     public String getIp() {
         return ip;
+    }
+
+    public String getPort() {
+        return port;
+    }
+
+    public void setPort(String port) {
+        this.port = port;
     }
 
     public void setIp(String ip) {
@@ -26,7 +35,7 @@ public class HomeGrid {
     }
 
     public String getBaseUrl() {
-        return baseUrl="http://"+getIp()+":8080/ctl/";
+        return baseUrl="http://"+getIp()+":"+getPort()+"/ctl/";
     }
 
     public void setBaseUrl(String baseUrl) {
